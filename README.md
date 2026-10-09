@@ -62,7 +62,7 @@ This Task2B model follows the published task and checker. It does not infer unpr
 ## Files to inspect
 
 - `waypoint_datathon.py`: complete Python implementation, including reusable training and inference functions.
-- `TeamName_FinalNotebook.ipynb`: executed walkthrough of label construction, features, model configurations, saved evaluation results, allocation and saved-model inference. Training cells are available behind `RUN_TRAINING=True`; the included models were trained by the Python module.
+- `Alt+ F4_FinalNotebook.ipynb`: executed walkthrough of label construction, features, model configurations, saved evaluation results, allocation and saved-model inference. Training cells are available behind `RUN_TRAINING=True`; the included models were trained by the Python module.
 - `outputs/submissions/submission_task1.csv`: 5,014 predictions, original template order.
 - `outputs/submissions/submission_task2a.csv`: 60 weekly volume forecasts.
 - `outputs/submissions/submission_task2b.csv`: 85 order decisions.
@@ -75,9 +75,9 @@ This Task2B model follows the published task and checker. It does not infer unpr
 - `outputs/reports/official_checker.txt`: organizer checker result.
 - `PREPROCESSING.md`, `ARCHITECTURE.md`, `AI_DISCLOSURE.md`, `DEMO_OUTLINE.md`: supporting competition documentation.
 
-Original datasets are not bundled in this download. Preserve their competition-only use and confidentiality. For submission, replace `TeamName` in the notebook filename, review the AI disclosure, and record the required unlisted 3–5 minute demo. The code does not record/upload a video or submit on your behalf. Place the reviewed deliverables in your team folder and zip it as `TeamName_Datathon.zip` as required by the booklet.
+Original datasets are not bundled in this download. Preserve their competition-only use and confidentiality. For submission, replace `Alt+ F4` in the notebook filename, review the AI disclosure, and record the required unlisted 3–5 minute demo. The code does not record/upload a video or submit on your behalf. Place the reviewed deliverables in your team folder and zip it as `Alt+ F4_Datathon.zip` as required by the booklet.
 
-The included notebook's 12 code cells were executed in order through in-process IPython because the build environment does not permit a network Jupyter kernel. All displayed tables, figures and predictions are actual outputs. Open it normally in Jupyter, or rerun without a kernel server using `python execute_notebook.py TeamName_FinalNotebook.ipynb` after placing `data/` and `outputs/` beside it. `python build_notebook.py` regenerates the notebook without saved outputs.
+The included notebook's 12 code cells were executed in order through in-process IPython because the build environment does not permit a network Jupyter kernel. All displayed tables, figures and predictions are actual outputs. Open it normally in Jupyter, or rerun without a kernel server using `python execute_notebook.py Alt+ F4_FinalNotebook.ipynb` after placing `data/` and `outputs/` beside it. `python build_notebook.py` regenerates the notebook without saved outputs.
 
 ## Primary references
 
