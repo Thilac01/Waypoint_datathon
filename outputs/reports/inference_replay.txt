@@ -1,0 +1,29 @@
+2026-10-09 16:57:38,638 INFO Finished. Files: /workspace/scratch/dc5195b8c836/waypoint_solution
+Task1 input sample:
+ delivery_id order_date dispatch_date dispatch_status outlet_id brand district      depot temp_requirement  order_units  order_weight_kg  order_volume_m3 route_id  seq_in_route vehicle_id vehicle_type vehicle_temp planned_arrival_time window_open_time window_close_time
+ ORD0092308 2026-02-16    2026-02-16       attempted    OUT001 Fresh  Colombo Peliyagoda          ambient           11             92.1            0.501  R025229             0     VEH037          van      ambient                05:21            05:00             07:30
+ ORD0092309 2026-02-16    2026-02-16       attempted    OUT002 Fresh  Colombo Peliyagoda          ambient           12             96.2            0.539  R025229             2     VEH037          van      ambient                06:10            05:30             08:00
+ ORD0092310 2026-02-16    2026-02-16       attempted    OUT003 Fresh  Colombo Peliyagoda          ambient           13             89.8            0.472  R025229             1     VEH037          van      ambient                05:46            05:00             07:30
+ ORD0092311 2026-02-16    2026-02-16       attempted    OUT004 Fresh  Colombo Peliyagoda          ambient           28            216.4            1.193  R025246             1     VEH021        truck      ambient                06:44            05:30             08:00
+ ORD0092312 2026-02-16    2026-02-16       attempted    OUT005 Fresh  Colombo Peliyagoda          ambient           70            467.1            2.687  R025245             3     VEH012        truck      ambient                06:22            04:00             07:45
+Task1 saved-model predictions:
+ delivery_id  pred_service_min  pred_late_prob
+ ORD0092308          7.408439        0.000084
+ ORD0092309          7.049250        0.000225
+ ORD0092310         11.401019        0.000178
+ ORD0092311         10.037015        0.002631
+ ORD0092312         12.491322        0.007459
+Task2A input sample:
+ row_id      depot brand  iso_year  iso_week
+ W0000      Kandy Fresh      2026        14
+ W0001      Kandy Style      2026        14
+ W0002      Kandy  Tech      2026        14
+ W0003 Peliyagoda Fresh      2026        14
+ W0004 Peliyagoda Style      2026        14
+Task2A saved-model predictions:
+ row_id      depot brand  iso_year  iso_week  pred_total_volume_m3  pred_chilled_volume_m3
+ W0000      Kandy Fresh      2026        14            510.238068              187.332064
+ W0001      Kandy Style      2026        14             81.002128                0.000000
+ W0002      Kandy  Tech      2026        14             23.031846                0.000000
+ W0003 Peliyagoda Fresh      2026        14            966.348213              371.701726
+ W0004 Peliyagoda Style      2026        14            145.158791                0.000000

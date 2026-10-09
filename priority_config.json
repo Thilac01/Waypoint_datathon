@@ -1,0 +1,10 @@
+{
+  "base": 100,
+  "Fresh": 300,
+  "Style": 0,
+  "Tech": 0,
+  "chilled_bonus": 150,
+  "deferred_yesterday_bonus": 200,
+  "per_day_unserved": 15,
+  "days_cap": 7
+}

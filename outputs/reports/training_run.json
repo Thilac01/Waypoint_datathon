@@ -1,0 +1,17 @@
+{
+  "preset": "balanced",
+  "seed": 2026,
+  "task1_jobs": 4,
+  "demand_jobs": 3,
+  "allocation_jobs": 3,
+  "allocator_seconds_per_policy": 120,
+  "tuning_task1_configurations_per_target": 8,
+  "tuning_demand_candidates_per_target": 10,
+  "source": "waypoint_datathon.py",
+  "training_entrypoints": [
+    "run_task1",
+    "run_task2a",
+    "run_task2b"
+  ],
+  "note": "Tasks executed separately; final CLI validation and saved-model replay passed. thorough configurations are available in source but not part of these included results."
+}

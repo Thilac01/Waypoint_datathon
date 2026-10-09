@@ -1,0 +1,104 @@
+[
+  {
+    "file": "Training Data/deliveries_train.csv",
+    "bytes": 13305352,
+    "sha256": "eb6bed3914d43f073c372a5c7624d3650cbe10c22462b54be7ad2c9ed5033619",
+    "rows": 92307
+  },
+  {
+    "file": "Training Data/route_legs_train.csv",
+    "bytes": 12083037,
+    "sha256": "70296c44c4ba694cf264aec236d07f426141fee6f3552bfd18523cb416e40280",
+    "rows": 91894
+  },
+  {
+    "file": "Test Data/task1_test_inputs.csv",
+    "bytes": 723979,
+    "sha256": "23912f8c297a897717075a37d77dd42b57d94d1633b012b5dde324a5f7fa5593",
+    "rows": 5014
+  },
+  {
+    "file": "Test Data/route_legs_test.csv",
+    "bytes": 553931,
+    "sha256": "3bc4943e69f466d94b3d2bc1b13f6422001dcee40ec77ac055a26713b08f1fc9",
+    "rows": 5014
+  },
+  {
+    "file": "Test Data/task2a_test_inputs.csv",
+    "bytes": 1727,
+    "sha256": "eeddce2128698a5cff992a5a2b5e9e5324323ee4903b7c4e5ae9d5660e4edebb",
+    "rows": 60
+  },
+  {
+    "file": "Test Data/task2b_peak_day_scenarios.csv",
+    "bytes": 8655,
+    "sha256": "1abdd311eeac9eee8f403a2653bbf81758759635c38ee9bd4b16e67562116799",
+    "rows": 85
+  },
+  {
+    "file": "Test Data/task2b_peak_day_fleet.csv",
+    "bytes": 807,
+    "sha256": "b3c3b81ec18772b86a871e468c9daaaed6048b46d8ff223b7c114f3268c51427",
+    "rows": 38
+  },
+  {
+    "file": "General Data/outlets.csv",
+    "bytes": 7364,
+    "sha256": "206a915f16c9b522473d4ad314d1c7c435345911427d9e0878d6e66241c32c42",
+    "rows": 120
+  },
+  {
+    "file": "General Data/vehicles.csv",
+    "bytes": 3372,
+    "sha256": "f70175f786574f4c4d07480df263b5ba59918bcecd7a91e5c59d3f7a75b52b1f",
+    "rows": 60
+  },
+  {
+    "file": "General Data/calendar.csv",
+    "bytes": 36456,
+    "sha256": "2201b18787287dc9621cde516c22ac7ce656da76ff0ccc956e1325a7b2fc3113",
+    "rows": 910
+  },
+  {
+    "file": "General Data/district_travel.csv",
+    "bytes": 657,
+    "sha256": "ac31c4d7a8adcbf8e020bec42d9037bc6ece0fc2cabbf116269710dbe2d239c5",
+    "rows": 12
+  },
+  {
+    "file": "General Data/service_allowance.csv",
+    "bytes": 194,
+    "sha256": "9b0fe764a50e663ef293a4cb1f9b104ce71b77a3afc863db08228f6e497590a9",
+    "rows": 9
+  },
+  {
+    "file": "General Data/traffic_speed.csv",
+    "bytes": 9209,
+    "sha256": "2b841682af4dc38a73ea6765a40ac4e060af124d772039ab6d8e81ba2e997bd7",
+    "rows": 576
+  },
+  {
+    "file": "General Data/road_conditions.csv",
+    "bytes": 248626,
+    "sha256": "c54657447feaa1087d123523787e0643c19922439c94ead3c39792f2be32906f",
+    "rows": 10920
+  },
+  {
+    "file": "Submission Templates/submission_task1.csv",
+    "bytes": 65226,
+    "sha256": "cdf6d73c6d629af57cb2576fa6f5d7ead4aae9cc9be8a19399789839f29b4903",
+    "rows": 5014
+  },
+  {
+    "file": "Submission Templates/submission_task2a.csv",
+    "bytes": 531,
+    "sha256": "b39825cd796c36cadee44301fdb92b7d4639976f49744cb5d39dfdf69d5b7086",
+    "rows": 60
+  },
+  {
+    "file": "Submission Templates/submission_task2b.csv",
+    "bytes": 4987,
+    "sha256": "44951a07e904d13d7280ec396bb5b281c2bf07dbb18715e3ea4d4ad05f74317c",
+    "rows": 85
+  }
+]

@@ -1,0 +1,10 @@
+test_actual_outcomes_cannot_change_features (__main__.ChallengeChecks.test_actual_outcomes_cannot_change_features) ... ok
+test_demand_includes_not_run_and_uses_order_date (__main__.ChallengeChecks.test_demand_includes_not_run_and_uses_order_date) ... ok
+test_saved_models_reproduce_files (__main__.ChallengeChecks.test_saved_models_reproduce_files) ... ok
+test_submissions_and_corruption_detection (__main__.ChallengeChecks.test_submissions_and_corruption_detection) ... ok
+test_waiting_is_not_service_and_close_is_not_late (__main__.ChallengeChecks.test_waiting_is_not_service_and_close_is_not_late) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 6.546s
+
+OK

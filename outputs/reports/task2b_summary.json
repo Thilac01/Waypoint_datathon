@@ -1,0 +1,73 @@
+{
+  "objective": "priority",
+  "solver_status": "OPTIMAL",
+  "objective_value": 1260867617933.0,
+  "objective_bound": 1260867617933.0,
+  "relative_gap": 0.0,
+  "seconds": 3.4961588640000003,
+  "served": 79,
+  "deferred": 6,
+  "priority_points_served": 35770,
+  "individually_impossible_orders": [
+    "S1-078"
+  ],
+  "max_count_comparison": {
+    "objective": "count",
+    "solver_status": "OPTIMAL",
+    "objective_value": 79.0,
+    "objective_bound": 79.0,
+    "relative_gap": 0.0,
+    "seconds": 2.011400101,
+    "served": 79,
+    "deferred": 6,
+    "priority_points_served": 35770,
+    "individually_impossible_orders": [
+      "S1-078"
+    ]
+  },
+  "priority_policy": {
+    "base": 100,
+    "Fresh": 300,
+    "Style": 0,
+    "Tech": 0,
+    "chilled_bonus": 150,
+    "deferred_yesterday_bonus": 200,
+    "per_day_unserved": 15,
+    "days_cap": 7
+  },
+  "served_volume_m3": 328.29800000000006,
+  "deferred_volume_m3": 81.566,
+  "by_brand": [
+    {
+      "brand": "Fresh",
+      "decision": "deferred",
+      "orders": 5,
+      "volume_m3": 40.906000000000006
+    },
+    {
+      "brand": "Fresh",
+      "decision": "served",
+      "orders": 70,
+      "volume_m3": 273.69100000000003
+    },
+    {
+      "brand": "Style",
+      "decision": "deferred",
+      "orders": 1,
+      "volume_m3": 40.66
+    },
+    {
+      "brand": "Style",
+      "decision": "served",
+      "orders": 4,
+      "volume_m3": 36.553
+    },
+    {
+      "brand": "Tech",
+      "decision": "served",
+      "orders": 5,
+      "volume_m3": 18.054
+    }
+  ],
+  "official_checker": "FEASIBILITY: PASSED - every rule satisfied."
+}

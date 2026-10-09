@@ -1,0 +1,32 @@
+{
+  "task1": {
+    "rows": 5014,
+    "columns": [
+      "delivery_id",
+      "pred_service_min",
+      "pred_late_prob"
+    ],
+    "valid": true
+  },
+  "task2a": {
+    "rows": 60,
+    "columns": [
+      "row_id",
+      "pred_total_volume_m3",
+      "pred_chilled_volume_m3"
+    ],
+    "valid": true
+  },
+  "task2b": {
+    "rows": 85,
+    "columns": [
+      "scenario",
+      "order_ref",
+      "outlet_id",
+      "decision",
+      "vehicle_id",
+      "trip_id"
+    ],
+    "valid": true
+  }
+}

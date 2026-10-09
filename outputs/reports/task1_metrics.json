@@ -1,0 +1,129 @@
+{
+  "labeled_orders": 91894,
+  "not_run_excluded": 413,
+  "features": 76,
+  "label_service": "leave_outlet - max(arrival, window_open)",
+  "label_late": "arrival > window_close",
+  "late_prevalence": 0.1957799203430039,
+  "tuning_windows": [
+    [
+      "2025-11-09",
+      "2025-12-06"
+    ],
+    [
+      "2025-12-07",
+      "2026-01-03"
+    ]
+  ],
+  "holdout": [
+    "2026-01-04",
+    "2026-02-14"
+  ],
+  "selection_note": "Tune candidates, weights and calibration before the untouched holdout; refit on all labels afterwards.",
+  "service": {
+    "selection": [
+      [
+        "catboost_depth6",
+        0.720378159106873
+      ],
+      [
+        "hist_leaves31",
+        0.279621840893127
+      ]
+    ],
+    "rounds": {
+      "catboost_depth6": 810,
+      "hist_leaves31": 400
+    },
+    "holdout_metrics": {
+      "mae": 3.752355649968833,
+      "rmse": 6.042707627169151,
+      "r2": 0.8299092647630875,
+      "wape": 0.2039235676711108,
+      "smape": 0.20713639060483605
+    },
+    "holdout_by_brand": {
+      "Fresh": {
+        "mae": 3.3580949002459852,
+        "rmse": 4.786598527262493,
+        "r2": 0.7179952266661973,
+        "wape": 0.20358660232271242,
+        "smape": 0.2069754630022252
+      },
+      "Style": {
+        "mae": 10.004235460927283,
+        "rmse": 14.429513762140447,
+        "r2": 0.7137275453749468,
+        "wape": 0.20819024960309276,
+        "smape": 0.20554802156958313
+      },
+      "Tech": {
+        "mae": 13.651655220582876,
+        "rmse": 21.13810067971306,
+        "r2": 0.7909807343201243,
+        "wape": 0.20328197629532435,
+        "smape": 0.2176461577318262
+      }
+    },
+    "calibration": {
+      "method": "none"
+    }
+  },
+  "lateness": {
+    "selection": [
+      [
+        "xgboost_depth5",
+        0.4748506140468604
+      ],
+      [
+        "catboost_depth6",
+        0.32896015798611294
+      ],
+      [
+        "lightgbm_leaves31",
+        0.19618922796702667
+      ]
+    ],
+    "rounds": {
+      "xgboost_depth5": 601,
+      "catboost_depth6": 687,
+      "lightgbm_leaves31": 448
+    },
+    "holdout_metrics": {
+      "log_loss": 0.1322866905655637,
+      "brier": 0.041127589866823286,
+      "roc_auc": 0.9752751515151515,
+      "pr_auc": 0.8687337755584239,
+      "accuracy_at_0.5": 0.9449851042701093
+    },
+    "holdout_by_brand": {
+      "Fresh": {
+        "log_loss": 0.1363621445355429,
+        "brier": 0.042393850242169136,
+        "roc_auc": 0.9745344746046347,
+        "pr_auc": 0.8699658445453705,
+        "accuracy_at_0.5": 0.9432031739402799
+      },
+      "Style": {
+        "log_loss": 0.05688767183320022,
+        "brier": 0.017333813517137295,
+        "roc_auc": 0.9872685185185185,
+        "pr_auc": 0.8075757575757575,
+        "accuracy_at_0.5": 0.98
+      },
+      "Tech": {
+        "log_loss": 0.04679193793664755,
+        "brier": 0.015137438980590202,
+        "roc_auc": 0.992831541218638,
+        "pr_auc": 0.8666666666666667,
+        "accuracy_at_0.5": 0.9791666666666666
+      }
+    },
+    "calibration": {
+      "method": "none",
+      "second_tuning_fold_before": 0.14388281851289916,
+      "second_tuning_fold_after": 0.14407904877282793,
+      "caveat": "Ensemble weights used both tuning folds; only final holdout is independent."
+    }
+  }
+}
