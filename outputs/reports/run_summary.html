@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>Waypoint run summary</title>
+<style>
+.waypoint-summary{font-family:system-ui,-apple-system,Segoe UI,sans-serif;max-width:1160px;margin:24px auto;background:#191919;color:#f1f1f1;padding:24px;border-radius:12px}
+.waypoint-summary h1{font-size:23px;font-weight:600;margin:0 0 6px}.waypoint-summary .sub{color:#b8b8b8;font-size:14px;margin:0 0 20px}
+.waypoint-summary table{width:100%;border-collapse:collapse;table-layout:fixed}.waypoint-summary th,.waypoint-summary td{padding:17px 12px;border-top:1px solid #333;vertical-align:top;line-height:1.5;overflow-wrap:anywhere}
+.waypoint-summary th{width:46%;text-align:left;font-size:17px;font-weight:400}.waypoint-summary td{font-family:ui-monospace,Consolas,monospace;font-size:16px}
+.waypoint-summary .note{font-size:13px;line-height:1.7;color:#c2c2c2;margin:20px 12px 0}
+@media(max-width:600px){.waypoint-summary{padding:14px;margin:8px}.waypoint-summary th,.waypoint-summary td{font-size:13px;padding:12px 6px}}
+</style></head><body><section class="waypoint-summary"><h1>Waypoint Datathon</h1>
+<p class="sub">Selected models and measured run results</p><table aria-label="Datathon results"><tbody><tr><th scope='row'>Task 1 chosen service model</th><td>catboost_depth6 (72.0%) + hist_leaves31 (28.0%)</td></tr>
+<tr><th scope='row'>Task 1 service MAE</th><td>3.752 minutes</td></tr>
+<tr><th scope='row'>Task 1 chosen lateness model</th><td>xgboost_depth5 (47.5%) + catboost_depth6 (32.9%) + lightgbm_leaves31 (19.6%)</td></tr>
+<tr><th scope='row'>Task 1 lateness AUC</th><td>0.975</td></tr>
+<tr><th scope='row'>Task 2A total-volume blend MAE</th><td>18.113 m3</td></tr>
+<tr><th scope='row'>Task 2A chilled-volume blend MAE</th><td>14.300 m3</td></tr>
+<tr><th scope='row'>Task 2B served orders</th><td>79</td></tr>
+<tr><th scope='row'>Task 2B validation errors</th><td>0</td></tr></tbody></table><p class='note'>Prediction metrics use the saved chronological holdouts; they are not hidden-test scores. Demand MAE is weekly volume in cubic metres. Chilled MAE uses Fresh rows only. Model percentages are ensemble weights. Allocation errors come from a fresh independent check of the current CSV; the organizer checker result is saved separately in official_checker.txt.</p></section></body></html>

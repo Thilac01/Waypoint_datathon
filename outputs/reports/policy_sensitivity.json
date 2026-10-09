@@ -1,0 +1,97 @@
+{
+  "policies": {
+    "Fresh-first": {
+      "weights": {
+        "base": 100,
+        "Fresh": 1200,
+        "Style": 0,
+        "Tech": 0,
+        "chilled_bonus": 400,
+        "deferred_yesterday_bonus": 0,
+        "per_day_unserved": 0,
+        "days_cap": 7
+      },
+      "solver": {
+        "objective": "priority",
+        "solver_status": "OPTIMAL",
+        "objective_value": 3535446224633.0,
+        "objective_bound": 3535446224633.0,
+        "relative_gap": 0.0,
+        "seconds": 9.420535552,
+        "served": 79,
+        "deferred": 6,
+        "priority_points_served": 100300,
+        "individually_impossible_orders": [
+          "S1-078"
+        ]
+      },
+      "official_checker": "FEASIBILITY: PASSED - every rule satisfied."
+    },
+    "Fairness-first": {
+      "weights": {
+        "base": 100,
+        "Fresh": 0,
+        "Style": 0,
+        "Tech": 0,
+        "chilled_bonus": 0,
+        "deferred_yesterday_bonus": 2000,
+        "per_day_unserved": 250,
+        "days_cap": 7
+      },
+      "solver": {
+        "objective": "priority",
+        "solver_status": "OPTIMAL",
+        "objective_value": 2121984951434.0,
+        "objective_bound": 2121984951434.0,
+        "relative_gap": 0.0,
+        "seconds": 12.479449695000001,
+        "served": 77,
+        "deferred": 8,
+        "priority_points_served": 60200,
+        "individually_impossible_orders": [
+          "S1-078"
+        ]
+      },
+      "official_checker": "FEASIBILITY: PASSED - every rule satisfied."
+    },
+    "Balanced": {
+      "weights": {
+        "base": 100,
+        "Fresh": 300,
+        "Style": 0,
+        "Tech": 0,
+        "chilled_bonus": 150,
+        "deferred_yesterday_bonus": 200,
+        "per_day_unserved": 15,
+        "days_cap": 7
+      },
+      "solver": {
+        "objective": "priority",
+        "solver_status": "OPTIMAL",
+        "objective_value": 1260867617933.0,
+        "objective_bound": 1260867617933.0,
+        "relative_gap": 0.0,
+        "seconds": 12.009242682,
+        "served": 79,
+        "deferred": 6,
+        "priority_points_served": 35770,
+        "individually_impossible_orders": [
+          "S1-078"
+        ]
+      },
+      "official_checker": "FEASIBILITY: PASSED - every rule satisfied."
+    }
+  },
+  "changed_order_count": 6,
+  "same_served_sets": false,
+  "chilled_demand_m3": 181.629,
+  "optimistic_refrigerated_capacity_m3": 172.39999999999998,
+  "optimistic_shortfall_m3": 9.229000000000013,
+  "available_vehicles": 28,
+  "available_reefers": 4,
+  "available_refrigerated_vans": 1,
+  "constraint_engine_sha256": "238c7ce82ace4d0182d60a538f06ffec93dce4d1e49ea26502afc3320ba52972",
+  "method": "Same CP-SAT function and hard rules for each run; only integer benefit weights change.",
+  "comparison_rule": "Own-policy points have different scales. Compare balanced-reference points across rows.",
+  "selection": "The verified original Balanced submission is retained; these are supplementary policy experiments."
+}

@@ -39,5 +39,5 @@ def execute(path):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('notebook', nargs='?', default='TeamName_FinalNotebook.ipynb')
+    parser.add_argument('notebook', nargs='?', default='Alt-F4_FinalNotebook.ipynb')
     execute(parser.parse_args().notebook)

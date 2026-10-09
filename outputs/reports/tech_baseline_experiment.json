@@ -1,0 +1,28 @@
+{
+  "origins": [
+    "2025-09-01",
+    "2025-11-10"
+  ],
+  "excluded_final_holdout_start": "2026-01-19",
+  "comparison": [
+    {
+      "depot": "Kandy",
+      "reference_model": "mean_13",
+      "reference_tuning_rmse": 10.807528926468333,
+      "best_new_baseline": "mean_13_prior_bias",
+      "baseline_tuning_rmse": 10.710029585852268,
+      "relative_rmse_improvement": 0.009021427680594218,
+      "action": "Retain verified submission; exploratory earlier-validation evidence only."
+    },
+    {
+      "depot": "Peliyagoda",
+      "reference_model": "ridge_1",
+      "reference_tuning_rmse": 8.178414411916988,
+      "best_new_baseline": "mean_26",
+      "baseline_tuning_rmse": 9.260872624760662,
+      "relative_rmse_improvement": -0.13235551028893755,
+      "action": "Retain verified submission; exploratory earlier-validation evidence only."
+    }
+  ],
+  "protocol": "Nine explicitly defined simple baselines; expanding training, frozen ten-week forecasts. Bias uses older one-step residuals. Final holdout is excluded. No submission prediction or saved model is changed."
+}

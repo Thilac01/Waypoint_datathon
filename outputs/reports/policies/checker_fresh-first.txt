@@ -1,0 +1,1 @@
+FEASIBILITY: PASSED - every rule satisfied.

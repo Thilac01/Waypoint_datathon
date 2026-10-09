@@ -1,0 +1,4 @@
+policy,served_orders,deferred_orders,chilled_volume_delivered_m3,total_volume_delivered_m3,own_policy_points,balanced_reference_points,repeat_deferred_orders_served,repeat_deferred_orders_total,max_days_waiting_among_deferred,solver_status,solver_gap,official_checker,deferred_order_refs,seconds
+Fresh-first,79,6,140.723,328.29800000000006,100300,35770,9,10,5,OPTIMAL,0.0,PASSED,"S1-056, S1-058, S1-064, S1-067, S1-078, S1-083",9.420535552
+Fairness-first,77,8,126.25400000000002,313.829,60200,34900,10,10,2,OPTIMAL,0.0,PASSED,"S1-003, S1-058, S1-064, S1-067, S1-071, S1-073, S1-075, S1-078",12.479449695000001
+Balanced,79,6,140.723,328.29800000000006,35770,35770,9,10,5,OPTIMAL,0.0,PASSED,"S1-056, S1-058, S1-064, S1-067, S1-078, S1-083",12.009242682

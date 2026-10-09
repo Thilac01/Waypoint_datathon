@@ -1,0 +1,207 @@
+1
+00:00:00,000 --> 00:00:03,318
+This is Alt F four's Explainable Logistics Decision Intelligence submission.
+
+2
+00:00:03,318 --> 00:00:07,299
+The business question is not just which model has the best score.
+
+3
+00:00:07,299 --> 00:00:11,280
+It is which orders can be delivered, with the fleet actually available.
+
+4
+00:00:11,280 --> 00:00:14,597
+Our verified solution serves seventy nine of eighty five orders.
+
+5
+00:00:14,597 --> 00:00:16,920
+This walkthrough uses real executed notebook outputs.
+
+6
+00:00:16,920 --> 00:00:19,574
+The narration is synthetic and requires team review.
+
+7
+00:00:21,074 --> 00:00:23,736
+First, the notebook constructs waiting aware service labels.
+
+8
+00:00:23,736 --> 00:00:32,056
+If a vehicle arrives at eight forty, the outlet opens at nine, and handling ends at nine twelve, service is twelve minutes, not thirty two.
+
+9
+00:00:32,056 --> 00:00:34,052
+The twenty minute wait is excluded.
+
+10
+00:00:34,052 --> 00:00:38,046
+Arrival after window close is late; arrival exactly at close is not.
+
+11
+00:00:38,046 --> 00:00:46,032
+We join dispatched orders to their route legs one to one, exclude orders that never ran, and remove actual outcomes before building planned features.
+
+12
+00:00:47,532 --> 00:00:53,634
+We compare eight explicit configurations for each delivery target, including boosted trees, extra trees, and linear baselines.
+
+13
+00:00:53,634 --> 00:00:57,224
+Two earlier four week folds choose models and ensemble weights.
+
+14
+00:00:57,224 --> 00:01:01,890
+The six week final holdout comes later, from January fourth to February fourteenth.
+
+15
+00:01:01,890 --> 00:01:04,402
+Service prediction blends CatBoost and histogram boosting.
+
+16
+00:01:04,402 --> 00:01:08,709
+Late probability blends X G Boost, CatBoost and Light G B M.
+
+17
+00:01:08,709 --> 00:01:13,017
+The displayed results are from that frozen holdout, not the training data.
+
+18
+00:01:14,517 --> 00:01:21,452
+Service mean absolute error is three point seven five minutes, and lateness area under the curve is zero point nine seven five.
+
+19
+00:01:21,452 --> 00:01:23,659
+But the brand and depot table matters.
+
+20
+00:01:23,659 --> 00:01:24,920
+Fresh dominates the sample.
+
+21
+00:01:24,920 --> 00:01:29,019
+Tech has larger absolute handling errors, and its segment samples are much smaller.
+
+22
+00:01:29,019 --> 00:01:36,585
+For operational review, one thousand and seventeen of the five thousand and fourteen test orders have predicted late probability of at least fifty percent.
+
+23
+00:01:36,585 --> 00:01:38,476
+These are risks, not observed delays.
+
+24
+00:01:39,976 --> 00:01:45,479
+Demand uses order date and includes every order, even deferred orders and orders that never ran.
+
+25
+00:01:45,479 --> 00:01:51,669
+We build complete weekly series for each depot and brand, and forecast ten weeks from a fixed origin.
+
+26
+00:01:51,669 --> 00:01:55,796
+Candidate models include rolling means, a seasonal baseline, ridge regression and boosting.
+
+27
+00:01:55,796 --> 00:02:03,705
+The submitted network forecast peaks in week fifteen at about two thousand and seven cubic metres, including six hundred and eighty two chilled.
+
+28
+00:02:03,705 --> 00:02:06,113
+This supports inventory and refrigerated availability planning.
+
+29
+00:02:07,613 --> 00:02:12,111
+Overall total demand weighted absolute percentage error is six point zero eight percent.
+
+30
+00:02:12,111 --> 00:02:19,031
+That hides Tech errors of twenty four point seven percent in Kandy and twenty nine point eight percent in Peliyagoda.
+
+31
+00:02:19,031 --> 00:02:21,107
+Several series have negative R squared.
+
+32
+00:02:21,107 --> 00:02:24,913
+We tested nine simple Tech baselines using only earlier chronological folds.
+
+33
+00:02:24,913 --> 00:02:30,795
+The Kandy bias correction improved validation error by less than one percent; the Peliyagoda alternatives were worse.
+
+34
+00:02:30,795 --> 00:02:34,255
+We kept the verified predictions and report these limitations openly.
+
+35
+00:02:35,755 --> 00:02:41,011
+The peak day needs one hundred and eighty one point six cubic metres of chilled capacity.
+
+36
+00:02:41,011 --> 00:02:48,568
+Four available refrigerated vehicles can carry at most one hundred and seventy two point four cubic metres across two full volume trips each.
+
+37
+00:02:48,568 --> 00:02:53,496
+That is an optimistic bound: demand already exceeds it by nine point two cubic metres.
+
+38
+00:02:53,496 --> 00:03:00,066
+C P Sat then enforces whole orders, depot, brand and district compatibility, van access, weight, volume and published time budgets.
+
+39
+00:03:00,066 --> 00:03:04,009
+A separate maximum count solve proves the ceiling of seventy nine deliveries.
+
+40
+00:03:05,509 --> 00:03:09,281
+We changed only the priority weights, leaving every hard constraint unchanged.
+
+41
+00:03:09,281 --> 00:03:16,139
+Fresh first and balanced both serve seventy nine orders and deliver one hundred and forty point seven cubic metres chilled.
+
+42
+00:03:16,139 --> 00:03:21,283
+Fairness first serves seventy seven, but clears all ten previously deferred orders instead of nine.
+
+43
+00:03:21,283 --> 00:03:26,770
+That choice sacrifices two deliveries and fourteen point four six nine cubic metres of chilled volume.
+
+44
+00:03:26,770 --> 00:03:31,228
+The comparison uses common reference points, because different policy scores have different scales.
+
+45
+00:03:31,228 --> 00:03:34,657
+All three solutions are optimal and pass the original checker.
+
+46
+00:03:36,157 --> 00:03:40,896
+The final notebook cell reloads the saved models and reproduces both prediction files.
+
+47
+00:03:40,896 --> 00:03:44,177
+Template checks preserve every identifier, column and row order.
+
+48
+00:03:44,177 --> 00:03:48,551
+The allocation checker passes, and all three original submission files remain unchanged.
+
+49
+00:03:48,551 --> 00:03:54,019
+These task horizons are distinct; they are not one jointly solved real world route plan.
+
+50
+00:03:54,019 --> 00:03:59,852
+Optimality covers the published competition constraints, not unmodelled traffic, detailed arrival windows or remaining weekly fuel.
+
+51
+00:03:59,852 --> 00:04:04,226
+The package discloses the A I assistance and requires human team review.
+
+52
+00:04:04,226 --> 00:04:08,600
+Our contribution is a decision that can be explained, checked and defended.

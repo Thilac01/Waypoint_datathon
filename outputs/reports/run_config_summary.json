@@ -1,0 +1,23 @@
+{
+  "data": "data",
+  "output": "deliverables/Waypoint_Datathon/outputs",
+  "task": "summary",
+  "preset": "balanced",
+  "jobs": 4,
+  "allocator_seconds": 120,
+  "checker": "check_allocation.py",
+  "priority_config": null,
+  "seed": 2026,
+  "python": "3.12.14",
+  "packages": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0",
+    "catboost": "1.2.10",
+    "lightgbm": "4.7.0",
+    "xgboost": "3.4.1",
+    "ortools": "9.15.6755",
+    "joblib": "1.5.3"
+  }
+}

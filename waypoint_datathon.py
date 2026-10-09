@@ -1011,6 +1011,90 @@ def inference_task2a(data, model_dir):
     return result[["row_id", "depot", "brand", "iso_year", "iso_week", "pred_total_volume_m3", "pred_chilled_volume_m3"]]
 
 
+def write_run_summary(data, out):
+    """Display selected models and measured errors; never invent missing scores.
+
+    Reads saved holdout metrics. Checks the CURRENT allocation CSV before
+    reporting zero errors. This command does not fit or select any models.
+    """
+    from html import escape
+    out = Path(out)
+    report_dir = out / "reports"
+    report_dir.mkdir(parents=True, exist_ok=True)
+
+    def read_report(name):
+        path = report_dir / name
+        return json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
+
+    def chosen(target):
+        selection = task1.get(target, {}).get("selection", [])
+        if not selection:
+            return "Not run"
+        if len(selection) == 1:
+            return selection[0][0]
+        return " + ".join(f"{name} ({weight:.1%})" for name, weight in selection)
+
+    def score(report, target, metric, unit=""):
+        value = report.get(target, {}).get("holdout_metrics", {}).get(metric)
+        if value is None:
+            return "Not available"
+        require(np.isfinite(float(value)), f"Invalid summary metric: {target}/{metric}")
+        return f"{float(value):.3f}{unit}"
+
+    task1, demand = read_report("task1_metrics.json"), read_report("task2a_metrics.json")
+    served, validation_errors = "Not run", "Not checked"
+    allocation = out / "submissions/submission_task2b.csv"
+    if allocation.is_file():
+        sub = pd.read_csv(allocation)
+        if "decision" in sub:
+            served = str(int(sub.decision.eq("served").sum()))
+        try:
+            validate_allocation(data, sub)
+            validation_errors = "0"
+        except (ValueError, KeyError, TypeError, AttributeError) as exc:
+            # The validator stops at its first failure, so do not pretend this
+            # number is an exhaustive count of every possible problem.
+            validation_errors = "At least 1 - " + str(exc)
+            LOG.error("Summary allocation validation failed: %s", exc)
+
+    rows = [
+        ("Task 1 chosen service model", chosen("service")),
+        ("Task 1 service MAE", score(task1, "service", "mae", " minutes")),
+        ("Task 1 chosen lateness model", chosen("lateness")),
+        ("Task 1 lateness AUC", score(task1, "lateness", "roc_auc")),
+        ("Task 2A total-volume blend MAE", score(demand, "total", "mae", " m3")),
+        ("Task 2A chilled-volume blend MAE", score(demand, "chilled", "mae", " m3")),
+        ("Task 2B served orders", served),
+        ("Task 2B validation errors", validation_errors),
+    ]
+    summary = pd.DataFrame(rows, columns=["Metric", "Result"])
+    note = ("Prediction metrics use the saved chronological holdouts; they are not hidden-test scores. "
+            "Demand MAE is weekly volume in cubic metres. Chilled MAE uses Fresh rows only. "
+            "Model percentages are ensemble weights. Allocation errors come from a fresh independent check of the current CSV; "
+            "the organizer checker result is saved separately in official_checker.txt.")
+    md = "# Run summary\n\n| Metric | Result |\n|---|---|\n"
+    md += "\n".join("| " + label.replace("|", "\\|") + " | " + value.replace("|", "\\|").replace("\n", " ") + " |"
+                    for label, value in rows)
+    (report_dir / "run_summary.md").write_text(md + "\n\n" + note + "\n", encoding="utf-8")
+    summary.to_csv(report_dir / "run_summary.csv", index=False)
+    body = "\n".join(f"<tr><th scope='row'>{escape(label)}</th><td>{escape(value)}</td></tr>" for label, value in rows)
+    html = """<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>Waypoint run summary</title>
+<style>
+.waypoint-summary{font-family:system-ui,-apple-system,Segoe UI,sans-serif;max-width:1160px;margin:24px auto;background:#191919;color:#f1f1f1;padding:24px;border-radius:12px}
+.waypoint-summary h1{font-size:23px;font-weight:600;margin:0 0 6px}.waypoint-summary .sub{color:#b8b8b8;font-size:14px;margin:0 0 20px}
+.waypoint-summary table{width:100%;border-collapse:collapse;table-layout:fixed}.waypoint-summary th,.waypoint-summary td{padding:17px 12px;border-top:1px solid #333;vertical-align:top;line-height:1.5;overflow-wrap:anywhere}
+.waypoint-summary th{width:46%;text-align:left;font-size:17px;font-weight:400}.waypoint-summary td{font-family:ui-monospace,Consolas,monospace;font-size:16px}
+.waypoint-summary .note{font-size:13px;line-height:1.7;color:#c2c2c2;margin:20px 12px 0}
+@media(max-width:600px){.waypoint-summary{padding:14px;margin:8px}.waypoint-summary th,.waypoint-summary td{font-size:13px;padding:12px 6px}}
+</style></head><body><section class="waypoint-summary"><h1>Waypoint Datathon</h1>
+<p class="sub">Selected models and measured run results</p><table aria-label="Datathon results"><tbody>"""
+    html += body + "</tbody></table><p class='note'>" + escape(note) + "</p></section></body></html>\n"
+    (report_dir / "run_summary.html").write_text(html, encoding="utf-8")
+    print("\n" + summary.to_string(index=False) + "\n\n" + note + "\n")
+    return summary
+
+
 def write_plots(out):
     import matplotlib
     matplotlib.use("Agg")
@@ -1052,7 +1136,8 @@ def make_parser():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument("--data", default="data", help="Root of the extracted organizer data folder")
     parser.add_argument("--output", default="outputs", help="Output directory for models, reports and submissions")
-    parser.add_argument("--task", choices=["all", "task1", "task2a", "task2b", "validate", "predict"], default="all")
+    parser.add_argument("--task", choices=["all", "task1", "task2a", "task2b", "validate", "predict", "summary"], default="all",
+                        help="Use summary to display saved model/metric results without retraining")
     parser.add_argument("--preset", choices=["quick", "balanced", "thorough"], default="balanced",
                         help="Fixed candidate configurations; thorough compares 13 configurations per Task1 target")
     parser.add_argument("--jobs", type=int, default=min(4, os.cpu_count() or 1))
@@ -1098,7 +1183,9 @@ def main(argv=None):
             print("Task1 saved-model predictions:\n", inference_task1(data, out / "models").head().to_string(index=False))
             print("Task2A input sample:\n", data.read("task2a_test_inputs.csv").head().to_string(index=False))
             print("Task2A saved-model predictions:\n", inference_task2a(data, out / "models").head().to_string(index=False))
-        write_plots(out)
+        if args.task != "summary":
+            write_plots(out)
+        write_run_summary(data, out)
     LOG.info("Finished. Files: %s", out)
 
 

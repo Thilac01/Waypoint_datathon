@@ -54,4 +54,10 @@ The relatively large Tech errors and negative R-squared values in several indivi
 
 ## What remains for the team
 
-Review the implementation and AI disclosure, replace TeamName in the notebook filename, and record the required unlisted 3–5 minute demo video. This package does not include a recorded video or an uploaded competition submission. The supplied booklet does not provide exact prediction-scoring metrics, so no official score or ranking can be certified.
+The final notebook is named `Alt-F4_FinalNotebook.ipynb`. Review the implementation and AI disclosure. The package includes a 4-minute-10-second demo review file with synthetic narration over actual executed notebook/report excerpts; it is a rendered replay, not a live human recording. Review it or record the timed script yourselves, upload the reviewed video as unlisted, and submit its actual link. No competition submission or video upload has been performed. The supplied booklet does not provide exact prediction-scoring metrics, so no official score or ranking can be certified.
+
+## Added decision evidence
+
+Fresh-first and Balanced each serve 79 orders, delivering 140.723 m³ chilled and serving 9 of 10 repeat-deferred orders. Fairness-first serves 77 orders, delivering 126.254 m³ chilled while serving all 10 repeat-deferred orders. The policies change six order decisions. Every solution is optimal with 0% gap and passes the original feasibility checker; all hard constraints are unchanged. See `POLICY_SENSITIVITY.md` for weights and common-reference scores.
+
+Brand/depot service and lateness metrics and all demand-series errors appear in `EVALUATION_BY_SEGMENT.md`. Nine simple Tech baselines were tested only on the two earlier chronological validation windows. Kandy's best bias-corrected mean improves earlier RMSE by 0.90%; Peliyagoda's best new baseline is 13.24% worse than the verified ridge model. These modest/inconsistent changes do not establish improved unseen performance. The verified submissions and models remain unchanged.

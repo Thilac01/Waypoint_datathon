@@ -1,0 +1,9 @@
+Metric,Result
+Task 1 chosen service model,catboost_depth6 (72.0%) + hist_leaves31 (28.0%)
+Task 1 service MAE,3.752 minutes
+Task 1 chosen lateness model,xgboost_depth5 (47.5%) + catboost_depth6 (32.9%) + lightgbm_leaves31 (19.6%)
+Task 1 lateness AUC,0.975
+Task 2A total-volume blend MAE,18.113 m3
+Task 2A chilled-volume blend MAE,14.300 m3
+Task 2B served orders,79
+Task 2B validation errors,0

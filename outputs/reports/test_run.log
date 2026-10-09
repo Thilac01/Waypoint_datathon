@@ -5,6 +5,6 @@ test_submissions_and_corruption_detection (__main__.ChallengeChecks.test_submiss
 test_waiting_is_not_service_and_close_is_not_late (__main__.ChallengeChecks.test_waiting_is_not_service_and_close_is_not_late) ... ok
 
 ----------------------------------------------------------------------
-Ran 5 tests in 6.546s
+Ran 5 tests in 14.088s
 
 OK

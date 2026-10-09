@@ -1,6 +1,28 @@
-# Waypoint Datathon Python solution
+# Alt-F4 — Explainable Logistics Decision Intelligence
 
 A complete, local Python workflow for the three tasks in the Tech-Triathlon 2026 Challenge Booklet. The supplied organizer data stays in your own `data/` folder. No API key, network request, pretrained model or AutoML platform is used by the pipeline.
+
+## Review the final evidence first
+
+- `Alt-F4_Decision_Intelligence.pdf`: one-page decision showcase, physical refrigeration bottleneck and policy trade-off.
+- `Alt-F4_FinalNotebook.ipynb`: executed notebook with clear training switches, segment evaluation, policy comparison, and saved-model inference in the final cell.
+- `Alt-F4_FinalNotebook.html`: browser-readable export of that executed notebook.
+- `Alt-F4_Demo_Review.mp4`: approximately 4 minutes 10 seconds of synthetic narration over real executed notebook/report excerpts. This is a review draft and a rendered replay, not a live screen recording. `DEMO_OUTLINE.md` contains the timed script for human review or recording; `Alt-F4_Demo.srt` contains captions.
+- `TEAM_REVIEW.md` and `AI_DISCLOSURE.md`: the concrete decisions to understand and the actual assistance to disclose before submission.
+
+The three original submission CSVs and saved predictive models are retained. The final package adds decision evidence and presentation without substituting an unverified last-minute model. No video has been uploaded to YouTube and no competition entry has been submitted.
+
+### New policy evidence
+
+| Policy | Served | Chilled delivered (m³) | Common balanced points | Deferred | Repeat-deferred orders served |
+|---|---:|---:|---:|---:|---:|
+| Fresh-first | 79 | 140.723 | 35,770 | 6 | 9 / 10 |
+| Fairness-first | 77 | 126.254 | 34,900 | 8 | 10 / 10 |
+| Balanced | 79 | 140.723 | 35,770 | 6 | 9 / 10 |
+
+All three use the same hard constraints, reach optimality with 0% gap, and pass the organizer checker. Only priority weights change. Own-policy points have different scales; the table uses one common reference. Fairness clears the repeat-deferral backlog at the cost of two deliveries and 14.469 m³ chilled. The verified Balanced allocation remains the submission. These points are team policy, not the organizer's scoring formula.
+
+Total-demand WAPE is 6.08%, but Tech WAPE is 24.7% in Kandy and 29.8% in Peliyagoda. `outputs/reports/EVALUATION_BY_SEGMENT.md` shows the full picture. Nine simple Tech baselines use only the earlier validation folds: the best Kandy change improves RMSE by 0.90%; Peliyagoda's best new baseline is 13.24% worse than the verified model. We retain the verified forecasts. No new final-holdout improvement is claimed.
 
 ## Start here
 
@@ -28,6 +50,18 @@ python waypoint_datathon.py --data "data" --output "thorough_outputs" --preset t
 This is an explicit set of candidate models, not an exhaustive search of all possible algorithms. More computation does not guarantee a better unseen score. The booklet does not publish an exact prediction-scoring formula. Service selection uses RMSE, probability selection uses log loss, and each demand series is selected by weekly RMSE; all reports also include alternative metrics. Holdout results are local estimates, not organizer scores or a guaranteed competition ranking.
 
 For a quick first run use `--preset quick`. To run one task add `--task task1`, `--task task2a`, or `--task task2b`. Use the same output folder when completing the three tasks separately. Avoid simultaneous writers to the same task's output files.
+
+## Compact results summary
+
+The program now prints a summary after every run: selected service and lateness models (with ensemble weights), service MAE, lateness AUC, total/chilled demand MAE, served orders and allocation validation errors. It also saves `outputs/reports/run_summary.html` (a dark table like the reference), `run_summary.md`, and `run_summary.csv`. The notebook displays the same table.
+
+To display or refresh the summary without retraining:
+
+```bash
+python waypoint_datathon.py --data "data" --output "outputs" --task summary
+```
+
+The allocation CSV is rechecked before reporting zero validation errors. Missing results say `Not run` or `Not available`. Prediction metrics are from the saved chronological holdouts; demand errors use cubic metres per week, and chilled MAE is evaluated on Fresh rows only.
 
 ## Included trained results
 
@@ -62,7 +96,7 @@ This Task2B model follows the published task and checker. It does not infer unpr
 ## Files to inspect
 
 - `waypoint_datathon.py`: complete Python implementation, including reusable training and inference functions.
-- `Alt+ F4_FinalNotebook.ipynb`: executed walkthrough of label construction, features, model configurations, saved evaluation results, allocation and saved-model inference. Training cells are available behind `RUN_TRAINING=True`; the included models were trained by the Python module.
+- `Alt-F4_FinalNotebook.ipynb`: executed walkthrough of label construction, features, model configurations, saved evaluation results, allocation and saved-model inference. Training cells are available behind `RUN_TRAINING=True`; the included models were trained by the Python module.
 - `outputs/submissions/submission_task1.csv`: 5,014 predictions, original template order.
 - `outputs/submissions/submission_task2a.csv`: 60 weekly volume forecasts.
 - `outputs/submissions/submission_task2b.csv`: 85 order decisions.
@@ -75,9 +109,24 @@ This Task2B model follows the published task and checker. It does not infer unpr
 - `outputs/reports/official_checker.txt`: organizer checker result.
 - `PREPROCESSING.md`, `ARCHITECTURE.md`, `AI_DISCLOSURE.md`, `DEMO_OUTLINE.md`: supporting competition documentation.
 
-Original datasets are not bundled in this download. Preserve their competition-only use and confidentiality. For submission, replace `Alt+ F4` in the notebook filename, review the AI disclosure, and record the required unlisted 3–5 minute demo. The code does not record/upload a video or submit on your behalf. Place the reviewed deliverables in your team folder and zip it as `Alt+ F4_Datathon.zip` as required by the booklet.
+Original datasets are not bundled in this download. Preserve their competition-only use and confidentiality. Review the AI disclosure and the video, replacing the synthetic narration with a human recording if desired. Upload the reviewed 3–5 minute demo as unlisted on YouTube and put its actual link in the competition form. Place reviewed deliverables in the `Alt-F4_Datathon` folder and submit `Alt-F4_Datathon.zip` as required by the booklet. The booklet's deadline is 9 October 2026, 11:59 PM Sri Lanka time. No upload or submission has been performed here.
 
-The included notebook's 12 code cells were executed in order through in-process IPython because the build environment does not permit a network Jupyter kernel. All displayed tables, figures and predictions are actual outputs. Open it normally in Jupyter, or rerun without a kernel server using `python execute_notebook.py Alt+ F4_FinalNotebook.ipynb` after placing `data/` and `outputs/` beside it. `python build_notebook.py` regenerates the notebook without saved outputs.
+The included notebook's 16 code cells were executed in order through in-process IPython because the build environment does not permit a network Jupyter kernel. All displayed tables, figures and predictions are actual outputs. Open it normally in Jupyter, or rerun without a kernel server using `python execute_notebook.py Alt-F4_FinalNotebook.ipynb` after placing `data/` and `outputs/` beside it. `python build_notebook.py` regenerates the notebook without saved outputs.
+
+## Reproduce the added decision evidence
+
+```bash
+python decision_intelligence.py --data data --output outputs --checker check_allocation.py
+python -m pip install -r requirements-presentation.txt
+python build_showcase.py --output outputs --pdf Alt-F4_Decision_Intelligence.pdf
+python build_notebook.py
+python execute_notebook.py Alt-F4_FinalNotebook.ipynb
+python -m nbconvert --to html Alt-F4_FinalNotebook.ipynb
+```
+
+The evidence command saves policy allocations, independent audits, official-checker results, segment tables, earlier-validation baseline predictions and submission hashes. It does not overwrite the verified submissions. `--task policies`, `--task evaluation` or `--task tech` runs one part. After retraining, regenerate these reports before executing the notebook so the new results agree.
+
+Optional demo regeneration uses `python build_demo.py`, with FFmpeg on PATH compiled with its `flite` speech filter. The presentation requirements include the Python renderers. This is an offline artifact-rendering step, separate from predictive modelling. Its temporary `demo_build/` folder is excluded from the final ZIP. Synthetic narration and rendered notebook excerpts are disclosed explicitly.
 
 ## Primary references
 

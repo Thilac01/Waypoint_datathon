@@ -1,0 +1,37 @@
+{
+  "notebook_executed_cells": 16,
+  "notebook_errors": 0,
+  "showcase_pages": 1,
+  "official_checker_unchanged": true,
+  "policies_all_optimal_and_checker_passed": true,
+  "files": {
+    "outputs/submissions/submission_task2a.csv": {
+      "sha256": "85d416547a9e8d932d8d6300a1199ffab64069ca845e9128f3cc5f20296880d2",
+      "unchanged": true
+    },
+    "outputs/submissions/submission_task1.csv": {
+      "sha256": "4478d818fec0932421bdba37c7af9e4595353dee57278c998087ce6874ac80f4",
+      "unchanged": true
+    },
+    "outputs/submissions/submission_task2b.csv": {
+      "sha256": "6ab37287dd35ef6ce1d0ecb718c47d2623169735668e091291ded363e34c3a4f",
+      "unchanged": true
+    },
+    "outputs/models/task1_service.joblib": {
+      "sha256": "603af41f4c017eaf62808582a72b3dcb91b8563fecbb65a7a5c403351498532c",
+      "unchanged": true
+    },
+    "outputs/models/task1_lateness.joblib": {
+      "sha256": "45357c02e41761ff70a696ba933e4d12d4a898479db422c7afb6196d2298d4c9",
+      "unchanged": true
+    },
+    "outputs/models/task2a_total.joblib": {
+      "sha256": "a1339b0610000ff2cd6772db442bad62135a56e8053f9a5836feed56fca0aa7d",
+      "unchanged": true
+    },
+    "outputs/models/task2a_chilled.joblib": {
+      "sha256": "e549502ef85d5dafbd862098fea23ab7d9a27b37a5ecf37e67d2638888735215",
+      "unchanged": true
+    }
+  }
+}

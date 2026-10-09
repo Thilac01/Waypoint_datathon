@@ -1,0 +1,18 @@
+{
+  "task1": {
+    "planned_orders": 5014,
+    "flagged_at_0_5": 1017,
+    "expected_late_count": 1083.65275636,
+    "model_expected_total_handling_hours": 1525.3034900465,
+    "meaning": "Across the full six-week test horizon. These are predictions, not observed outcomes; summed service hours exclude travel and are not driver requirements."
+  },
+  "forecast_peak_week": {
+    "iso_year": 2026.0,
+    "iso_week": 15.0,
+    "pred_total_volume_m3": 2007.44789682,
+    "pred_chilled_volume_m3": 682.21910209
+  },
+  "forecast_total_m3": 17355.264973280002,
+  "forecast_chilled_m3": 5461.143555420001,
+  "scope": "The Task1 test horizon, Task2A future horizon and Task2B supplied scenario are distinct. Their outputs support one operating workflow but are not one jointly solved route plan."
+}

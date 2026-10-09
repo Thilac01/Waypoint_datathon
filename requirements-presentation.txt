@@ -1,0 +1,7 @@
+# Optional: regenerate the showcase PDF and HTML notebook; training uses requirements.txt.
+reportlab>=4.2,<5
+nbconvert>=7.16,<8
+markdown>=3.7,<4
+weasyprint>=66,<71
+PyMuPDF>=1.25,<2
+Pygments>=2.18,<3

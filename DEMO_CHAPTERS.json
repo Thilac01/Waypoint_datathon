@@ -1,0 +1,62 @@
+{
+  "duration_seconds": 250.178711,
+  "synthetic_narration": true,
+  "visuals": "Rendered excerpts of the executed notebook and actual reports; not a live screen recording.",
+  "notebook_sha256": "f5d02a5afcfb0d67ed640a5c5961237b9ef24aa84b60e6b375b13b8d480e5df7",
+  "chapters": [
+    {
+      "title": "A dispatch decision we can defend",
+      "start": 0,
+      "duration": 21.073792,
+      "narration": "This is Alt F four's Explainable Logistics Decision Intelligence submission. The business question is not just which model has the best score. It is which orders can be delivered, with the fleet actually available. Our verified solution serves seventy nine of eighty five orders. This walkthrough uses real executed notebook outputs. The narration is synthetic and requires team review."
+    },
+    {
+      "title": "Correct labels come before clever models",
+      "start": 21.073792,
+      "duration": 26.458521,
+      "narration": "First, the notebook constructs waiting aware service labels. If a vehicle arrives at eight forty, the outlet opens at nine, and handling ends at nine twelve, service is twelve minutes, not thirty two. The twenty minute wait is excluded. Arrival after window close is late; arrival exactly at close is not. We join dispatched orders to their route legs one to one, exclude orders that never ran, and remove actual outcomes before building planned features."
+    },
+    {
+      "title": "Train in the past; assess in the future",
+      "start": 47.532313,
+      "duration": 26.984292,
+      "narration": "We compare eight explicit configurations for each delivery target, including boosted trees, extra trees, and linear baselines. Two earlier four week folds choose models and ensemble weights. The six week final holdout comes later, from January fourth to February fourteenth. Service prediction blends CatBoost and histogram boosting. Late probability blends X G Boost, CatBoost and Light G B M. The displayed results are from that frozen holdout, not the training data."
+    },
+    {
+      "title": "Make performance differences visible",
+      "start": 74.516605,
+      "duration": 25.459854,
+      "narration": "Service mean absolute error is three point seven five minutes, and lateness area under the curve is zero point nine seven five. But the brand and depot table matters. Fresh dominates the sample. Tech has larger absolute handling errors, and its segment samples are much smaller. For operational review, one thousand and seventeen of the five thousand and fourteen test orders have predicted late probability of at least fifty percent. These are risks, not observed delays."
+    },
+    {
+      "title": "Forecast demand before committing capacity",
+      "start": 99.976459,
+      "duration": 27.63625,
+      "narration": "Demand uses order date and includes every order, even deferred orders and orders that never ran. We build complete weekly series for each depot and brand, and forecast ten weeks from a fixed origin. Candidate models include rolling means, a seasonal baseline, ridge regression and boosting. The submitted network forecast peaks in week fifteen at about two thousand and seven cubic metres, including six hundred and eighty two chilled. This supports inventory and refrigerated availability planning."
+    },
+    {
+      "title": "Show the weakness; avoid last-minute overfitting",
+      "start": 127.61270900000001,
+      "duration": 28.141875,
+      "narration": "Overall total demand weighted absolute percentage error is six point zero eight percent. That hides Tech errors of twenty four point seven percent in Kandy and twenty nine point eight percent in Peliyagoda. Several series have negative R squared. We tested nine simple Tech baselines using only earlier chronological folds. The Kandy bias correction improved validation error by less than one percent; the Peliyagoda alternatives were worse. We kept the verified predictions and report these limitations openly."
+    },
+    {
+      "title": "A physical bottleneck, then a feasibility proof",
+      "start": 155.75458400000002,
+      "duration": 29.754188,
+      "narration": "The peak day needs one hundred and eighty one point six cubic metres of chilled capacity. Four available refrigerated vehicles can carry at most one hundred and seventy two point four cubic metres across two full volume trips each. That is an optimistic bound: demand already exceeds it by nine point two cubic metres. C P Sat then enforces whole orders, depot, brand and district compatibility, van access, weight, volume and published time budgets. A separate maximum count solve proves the ceiling of seventy nine deliveries."
+    },
+    {
+      "title": "Policy changes have a measurable cost",
+      "start": 185.50877200000002,
+      "duration": 30.648521,
+      "narration": "We changed only the priority weights, leaving every hard constraint unchanged. Fresh first and balanced both serve seventy nine orders and deliver one hundred and forty point seven cubic metres chilled. Fairness first serves seventy seven, but clears all ten previously deferred orders instead of nine. That choice sacrifices two deliveries and fourteen point four six nine cubic metres of chilled volume. The comparison uses common reference points, because different policy scores have different scales. All three solutions are optimal and pass the original checker."
+    },
+    {
+      "title": "Reproduce the result and state the limits",
+      "start": 216.157293,
+      "duration": 33.943063,
+      "narration": "The final notebook cell reloads the saved models and reproduces both prediction files. Template checks preserve every identifier, column and row order. The allocation checker passes, and all three original submission files remain unchanged. These task horizons are distinct; they are not one jointly solved real world route plan. Optimality covers the published competition constraints, not unmodelled traffic, detailed arrival windows or remaining weekly fuel. The package discloses the A I assistance and requires human team review. Our contribution is a decision that can be explained, checked and defended."
+    }
+  ]
+}
